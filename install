@@ -1,11 +1,13 @@
 #!/bin/bash
 set -e
 
-wget -qO- https://github.com/ElementsProject/elements/archive/elements-0.18.1.9.tar.gz | tar -xvz -C /tmp
-cd /tmp/elements-elements-0.18.1.9/depends
+wget -qO- https://github.com/ElementsProject/elements/archive/refs/tags/elements-0.18.1.12.tar.gz | tar -xvz -C /tmp
+cd /tmp/elements-elements-0.18.1.12/depends
 make NO_QT=1 NO_UPNP=1
 cd ..
 ./autogen.sh
 ./configure --without-gui --with-incompatible-bdb
 make
 make install
+cd /
+rm -rf tmp/elements-elements-0.18.1.12
